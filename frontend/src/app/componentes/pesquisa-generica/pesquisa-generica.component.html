@@ -1,0 +1,37 @@
+<p>{{abstractListComponent!.pesquisaGenerica!.nomeTela}}</p>
+
+<table class="table table-bordered table-striped mt-lg-1 h6">
+  <thead>
+  <tr>
+    <th class="text-center">#</th>
+    <th class="text-center">Ações</th>
+    <th *ngFor="let column of abstractListComponent!.pesquisaGenerica!.nomeDasColunas">{{column}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ent of abstractListComponent!.lista">
+    <td class="text-center">
+      <label class="small">{{abstractListComponent!.lista.indexOf(ent) + 1}}</label>
+    </td>
+    <td class="text-center" >
+
+      <button type="button" class="btn btn-success"
+              [routerLink]="[abstractListComponent!.pesquisaGenerica!.urlEditar!, ent.id]">
+        Editar
+      </button>
+      <button type="button" class="btn btn-danger"
+              (click)="abstractListComponent!.remover(ent.id)">
+        remover
+      </button>
+
+    </td>
+
+
+
+    <th *ngFor="let obj of abstractListComponent!.pesquisaGenerica!.colunas">
+      <div [innerHTML]="abstractListComponent!.getValorColuna(ent, obj)"></div>
+    </th>
+
+  </tr>
+  </tbody>
+</table>
