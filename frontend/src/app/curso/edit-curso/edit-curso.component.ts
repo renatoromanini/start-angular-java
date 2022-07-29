@@ -21,9 +21,12 @@ export class EditCursoComponent implements OnInit {
     if (this.route.params) {
       this.route.params.subscribe((params) => {
         const id = params['id'];
-        this.cursoService.getCurso(id).subscribe(resp => {
-          this.curso = resp.body!;
-        })
+        if (id) {
+          this.cursoService.getCurso(id).subscribe(resp => {
+            this.curso = resp.body!;
+          })
+        }
+
       })
     }
     this.curso = new Curso();
